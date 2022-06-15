@@ -1,0 +1,10 @@
+<h1>Tasks</h1>
+<%= link_to 'NEW TASK CREATE', new_task_path %>
+<ul>
+  <% @tasks.each do |task| %>
+  <li>
+    <%= check_box_tag '','' %>
+    <%= task.title %>
+  </li>
+  <%end %>
+</ul>
