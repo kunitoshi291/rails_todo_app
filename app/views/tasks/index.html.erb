@@ -3,8 +3,7 @@
 <ul>
   <% @tasks.each do |task| %>
   <li>
-    <%= check_box_tag '','' %>
-    <%= task.title %>
+    <%= render 'completed', task: task %>
   </li>
   <%end %>
 </ul>
