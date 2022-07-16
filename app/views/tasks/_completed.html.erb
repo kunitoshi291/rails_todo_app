@@ -1,15 +1,17 @@
 <%= turbo_frame_tag task do %>
-  <!--  チェックボックスON OFF の処理発生時、サーバー側にデータを送信する処理
-   つまり、tasksコントローラーのtoggleメソッドにデータを送信する処理を書く -->
   <%= form_with model: task, url: toggle_task_path(task) do |f| %>
-  <!-- もしタスクがtrue.completedがtrueなら、span要素にcompletedをつける。falseなら、空文字をつける（クラスはつけない）-->
-   <span class="<%= task.completed? ? 'completed : ''  %>">
-        <%= f.check_box :completed, onchange: 'this.form.requestSubmit()'%>
+  <li>
+   <span class="<%= task.completed? ? 'completed' : ''  %>">
+        <%= f.check_box :completed, 
+         onchange: 'this.form.requestSubmit()'%>
+        
           <%= task.title %>
-          <%= link_to '[edit]', edit_task_path(task) %>
+          <%= link_to '[edit]', edit_task_path(task), 
+            data: {turbo_frame: '_top'} %>
           <%= link_to '[destroy]', task_path(task),
-          data:{turbo_method: 'delete', 
+            data:{turbo_method: 'delete', 
           turbo_confirm: 'Are you sure?'} %>
    </span>
+   </li>
   <% end %>
 <% end %>

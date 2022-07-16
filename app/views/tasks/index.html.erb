@@ -2,8 +2,6 @@
 <%= link_to 'NEW TASK CREATE', new_task_path %>
 <ul>
   <% @tasks.each do |task| %>
-  <li>
     <%= render 'completed', task: task %>
-  </li>
   <%end %>
 </ul>
